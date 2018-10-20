@@ -40,7 +40,7 @@ public class QRActivity extends AppCompatActivity {
                             Toast.makeText(QRActivity.this, "QR код не найден в базе данных", Toast.LENGTH_SHORT).show();
                         } else {
                             DataManager.addToHistory(recored);
-                            startActivity(new Intent(QRActivity.this, RecordActivity.class));
+                            startActivity(RecordActivity.getIntent(QRActivity.this, result.getText()));
                         }
                     }
                 });
@@ -54,7 +54,12 @@ public class QRActivity extends AppCompatActivity {
                 }
             }
         });
-
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(QRActivity.this, RecordHistoryActivity.class));
+            }
+        });
     }
 
     @Override

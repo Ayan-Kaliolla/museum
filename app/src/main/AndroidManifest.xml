@@ -3,6 +3,7 @@
     package="kz.kaliolla.museum">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -25,8 +26,16 @@
             android:name=".activivty.QRActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activivty.RecordActivity"></activity>
+            android:theme="@style/QRActivityTheme" />
+        <activity
+            android:name=".activivty.RecordActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activivty.RecordHistoryActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/QRActivityTheme" />
     </application>
 
 </manifest>
