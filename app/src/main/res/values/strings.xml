@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">museum</string>
+    <string name="splash_screen_text">Сканируйте QR и читайте информацию прямо на вашем смартфоне</string>
+    <string name="year">2018</string>
+
+</resources>
