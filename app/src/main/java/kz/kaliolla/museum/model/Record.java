@@ -9,12 +9,12 @@ public class Record {
     private String title;
     private String shortText;
     private String content;
-    private List<String> imageUrls;
+    private List<ImageUrl> imageUrls;
 
     public Record() {
     }
 
-    public Record(long id, String qr, String title, String shortText, String content, List<String> imageUrls) {
+    public Record(long id, String qr, String title, String shortText, String content, List<ImageUrl> imageUrls) {
         this.id = id;
         this.qr = qr;
         this.title = title;
@@ -63,11 +63,11 @@ public class Record {
         this.content = content;
     }
 
-    public List<String> getImageUrls() {
+    public List<ImageUrl> getImageUrls() {
         return imageUrls;
     }
 
-    public void setImageUrls(List<String> imageUrls) {
+    public void setImageUrls(List<ImageUrl> imageUrls) {
         this.imageUrls = imageUrls;
     }
 }

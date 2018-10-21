@@ -5,19 +5,26 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kz.kaliolla.museum.DataManager;
 import kz.kaliolla.museum.R;
+import kz.kaliolla.museum.model.ImageUrl;
 import kz.kaliolla.museum.model.Record;
 
 public class RecordActivity extends AppCompatActivity {
     @BindView(R.id.slider)
     SliderLayout sliderShow;
+    @BindView(R.id.content)
+    TextView content;
+
     private static final String PARAM_QR_CODE = "qr_code";
 
     public static final Intent getIntent(@NonNull Context context, @NonNull String qr){
@@ -30,18 +37,17 @@ public class RecordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_record);
         ButterKnife.bind(this);
         Record record = DataManager.getRecored(getIntent().getStringExtra(PARAM_QR_CODE));
-        String imgUrl = record.getImageUrls().get(0);
+        content.setText(record.getContent());
+        initImageSlider(record.getImageUrls());
+    }
 
-        TextSliderView textSliderView = new TextSliderView(this);
-        textSliderView
-                .description("Game of Thrones")
-                .image(imgUrl);
-        sliderShow.addSlider(textSliderView);
-        textSliderView = new TextSliderView(this);
-        textSliderView
-                .description("Game of Thrones")
-                .image(imgUrl);
-        sliderShow.addSlider(textSliderView);
+    private void initImageSlider(List<ImageUrl> imageUrls) {
+        for (ImageUrl imageUrl : imageUrls) {
+            TextSliderView textSliderView = new TextSliderView(this);
+            textSliderView.description(imageUrl.getTitle())
+                    .image(imageUrl.getUrl());
+            sliderShow.addSlider(textSliderView);
+        }
     }
 
     @Override
@@ -51,8 +57,9 @@ public class RecordActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
+    protected void onPause() {
         sliderShow.stopAutoCycle();
-        super.onStop();
+        super.onPause();
     }
+
 }

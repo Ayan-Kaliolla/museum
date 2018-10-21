@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kz.kaliolla.museum">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -29,6 +30,7 @@
             android:theme="@style/QRActivityTheme" />
         <activity
             android:name=".activivty.RecordActivity"
+            android:theme="@style/QRActivityTheme"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
