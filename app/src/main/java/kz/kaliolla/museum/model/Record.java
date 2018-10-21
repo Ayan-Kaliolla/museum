@@ -70,4 +70,18 @@ public class Record {
     public void setImageUrls(List<ImageUrl> imageUrls) {
         this.imageUrls = imageUrls;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Record record = (Record) o;
+        return Objects.equals(qr, record.qr);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(qr);
+    }
 }

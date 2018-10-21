@@ -8,7 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="QRActivityTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="QRActivityTheme" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+        <item name="colorAccent">@color/qrColorAccent</item>
+    </style>
+
+    <style name="NoActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/qrColorAccent</item>
     </style>
 

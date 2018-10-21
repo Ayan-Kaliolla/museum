@@ -67,20 +67,23 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <TextView
+        android:id="@+id/no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="@dimen/activity_padding"
+        android:text="text"
+        android:textSize="20sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/history"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:lineSpacingExtra="8dp"
-            android:padding="@dimen/activity_padding"
-            android:text="text"
-            android:textSize="20sp" />
-    </android.support.v4.widget.NestedScrollView>
+        android:paddingBottom="@dimen/activity_padding"
+        android:paddingTop="@dimen/activity_padding_large"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/call"

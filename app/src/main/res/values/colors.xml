@@ -8,5 +8,6 @@
     <color name="preloader_color">#2A9FFF</color>
     <color name="qrColorAccent">#FD5B35</color>
     <color name="colorGray">#c3c3c3</color>
+    <color name="colorRecordHistoryItem">#867B7B</color>
 
 </resources>

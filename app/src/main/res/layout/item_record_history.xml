@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/list_item_padding"
+    android:layout_marginEnd="@dimen/activity_padding"
+    android:layout_marginStart="@dimen/activity_padding"
+    android:layout_marginTop="@dimen/list_item_padding"
+    android:padding="@dimen/activity_padding">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_padding">
+
+        <ImageView
+            android:id="@+id/qr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_qr_item"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="@dimen/component_padding"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_normal"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/qr"
+            app:layout_constraintTop_toTopOf="@+id/qr" />
+
+        <TextView
+            android:id="@+id/short_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/component_padding"
+            android:singleLine="true"
+            android:textColor="@color/colorRecordHistoryItem"
+            android:textSize="@dimen/text_small"
+            android:textStyle="italic"
+            app:layout_constraintLeft_toRightOf="@+id/qr"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

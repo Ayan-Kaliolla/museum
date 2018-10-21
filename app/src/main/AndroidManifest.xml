@@ -27,17 +27,17 @@
             android:name=".activivty.QRActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/QRActivityTheme" />
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".activivty.RecordActivity"
-            android:theme="@style/QRActivityTheme"
+            android:theme="@style/NoActionBar"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activivty.RecordHistoryActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/QRActivityTheme" />
+            android:theme="@style/NoActionBar" />
     </application>
 
 </manifest>

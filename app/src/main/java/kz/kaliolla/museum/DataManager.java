@@ -22,11 +22,17 @@ public class DataManager {
     }
 
     public static void addToHistory(Record record) {
-        history.add(record);
+        if (!history.contains(record)) {
+            history.add(record);
+        }
     }
 
     public static List<Record> getHistory() {
         return new ArrayList<>(history);
+    }
+
+    public static void deleteFromHistory(int adapterPosition) {
+        history.remove(adapterPosition);
     }
 
     private static void initStore() {
@@ -111,6 +117,5 @@ public class DataManager {
                 )
         );
     }
-
 
 }
