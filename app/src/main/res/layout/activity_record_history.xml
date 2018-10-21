@@ -65,17 +65,20 @@
                  app:layout_collapseMode="pin"
                  app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
         </android.support.design.widget.CollapsingToolbarLayout>
+
     </android.support.design.widget.AppBarLayout>
 
     <TextView
         android:id="@+id/no_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:fillViewport="true"
         android:lineSpacingExtra="8dp"
         android:padding="@dimen/activity_padding"
-        android:text="text"
+        android:text="@string/data_not_found"
         android:textSize="20sp" />
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/history"
