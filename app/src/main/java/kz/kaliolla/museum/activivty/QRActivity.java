@@ -1,8 +1,12 @@
 package kz.kaliolla.museum.activivty;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +24,7 @@ import kz.kaliolla.museum.R;
 import kz.kaliolla.museum.model.Record;
 
 public class QRActivity extends AppCompatActivity {
+    private static final int CAMERA_REQUEST_CODE = 200;
     private CodeScanner mCodeScanner;
 
     @Override
@@ -30,6 +35,29 @@ public class QRActivity extends AppCompatActivity {
         }
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_qr);
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST_CODE);
+        } else {
+            initQrView();
+        }
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(QRActivity.this, RecordHistoryActivity.class));
+            }
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CAMERA_REQUEST_CODE && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            initQrView();
+        }
+    }
+
+    private void initQrView() {
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
         mCodeScanner = new CodeScanner(this, scannerView);
         mCodeScanner.setDecodeCallback(new DecodeCallback() {
@@ -57,23 +85,21 @@ public class QRActivity extends AppCompatActivity {
                 }
             }
         });
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(QRActivity.this, RecordHistoryActivity.class));
-            }
-        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mCodeScanner.startPreview();
+        if (mCodeScanner != null) {
+            mCodeScanner.startPreview();
+        }
     }
 
     @Override
     protected void onPause() {
-        mCodeScanner.releaseResources();
         super.onPause();
+        if (mCodeScanner != null) {
+            mCodeScanner.releaseResources();
+        }
     }
 }
